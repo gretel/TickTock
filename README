@@ -1,14 +1,13 @@
 This is an EXTREMELY simple little stopwatch class. You can measure wall-clock durations in two ways:
 
-var tt:TickTock = new TickTock();
-tt.start();
+TickTock.start();
 doSomeWork();
-tt.stop();
-trace( "That took "+tickTock.elapsedTimeInMilliseconds+" milliesconds" );
+var elapsedTimeInMilliseconds : uint = TickTock.stop();
+trace( "That took " + elapsedTimeInMilliseconds + " milliesconds" );
 
 or in a more functional, closure-y style:
 
-var tt:TickTock = TickTock.measure( function(){
+var elapsedTimeInMilliseconds : uint = TickTock.measure( function(){
   doSomeWork();
 });
-trace( "That took "+tickTock.elapsedTimeInMilliseconds+" milliesconds" );
+trace( "That took " + elapsedTimeInMilliseconds + " milliesconds" );
