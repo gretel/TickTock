@@ -1,29 +1,29 @@
 package net.thepete
 {
-	import flash.utils.getTimer;
+    import flash.utils.getTimer;
 
-	public class TickTock {
-		private var _startTime:int;
-		private var _stopTime:int;
+    public final class TickTock {
+        internal static var _startTime : uint;
+        internal static var _stopTime : uint;
 
-		public function start():void {
-			_startTime = getTimer();
-		}
+        public static function start() : void {
+            _startTime = getTimer();
+        }
 
-		public function stop():void {
-			_stopTime = getTimer();
-		}
+        public static function stop() : uint {
+            return ( _stopTime = getTimer() ) - _startTime;
+        }
 
-		public function get elapsedTimeInMilliseconds():int {
-			return _stopTime - _startTime;
-		}
+        public static function get elapsedTimeInMiliseconds() : uint {
+            return _stopTime - _startTime;
+        }
 
-		public static function measure( operation:Function ):TickTock {
-			var tt:TickTock = new TickTock();
-			tt.start();
-			operation();
-			tt.stop();
-			return tt;
-		}
-	}
+        public static function measure(operation : Function) : uint {
+            start();
+            operation();
+            stop();
+            return elapsedTimeInMiliseconds;
+        }
+
+    }
 }
